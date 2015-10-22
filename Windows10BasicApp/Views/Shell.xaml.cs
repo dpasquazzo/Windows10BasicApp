@@ -2,6 +2,8 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows10BasicApp.ViewModels;
+using Windows10BasicApp.Views;
 using XamlBrewer.Uwp.AdaptiveTriggerSample.ViewModels;
 
 namespace XamlBrewer.Uwp.AdaptiveTriggerSample.Views
@@ -33,7 +35,15 @@ namespace XamlBrewer.Uwp.AdaptiveTriggerSample.Views
                 var menuItem = e.AddedItems.First() as MenuItem;
                 if (menuItem.IsNavigation)
                 {
-                    SplitViewFrame.Navigate(menuItem.NavigationDestination);
+                    switch (menuItem.Text)
+                    {
+                        case "WithoutShell":
+                            Frame.Navigate(typeof (ViewWithoutShell));
+                            break;
+                        case "MainPage": case "SecondPage": case "ThirdPage":
+                            SplitViewFrame.Navigate(menuItem.NavigationDestination);
+                            break;
+                    }
                 }
                 else
                 {
@@ -64,6 +74,11 @@ namespace XamlBrewer.Uwp.AdaptiveTriggerSample.Views
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+        private void AppBarButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            //throw new System.NotImplementedException();
         }
     }
 }

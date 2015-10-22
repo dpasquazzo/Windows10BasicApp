@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.22823.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlBrewer.Uwp.AdaptiveTriggerSample", "XamlBrewer.Uwp.AdaptiveTriggerSample\XamlBrewer.Uwp.AdaptiveTriggerSample.csproj", "{6B12EE81-1313-4124-8655-967C56EE7FEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows10BasicApp", "Windows10BasicApp\Windows10BasicApp.csproj", "{6B12EE81-1313-4124-8655-967C56EE7FEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

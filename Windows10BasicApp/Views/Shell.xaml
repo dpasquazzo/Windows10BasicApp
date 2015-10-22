@@ -4,6 +4,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:vm="using:XamlBrewer.Uwp.AdaptiveTriggerSample.ViewModels"
+      xmlns:viewModels="using:Windows10BasicApp.ViewModels"
       mc:Ignorable="d">
 
     <Page.Resources>
@@ -12,9 +13,28 @@
     </Page.Resources>
 
     <Page.DataContext>
-        <vm:ShellViewModel />
+        <viewModels:ShellViewModel />
     </Page.DataContext>
+    <Page.TopAppBar>
+        <CommandBar>
+            <AppBarToggleButton Name="AppBarButton" Icon="Shuffle" Label="Shuffle" Click="AppBarButton_OnClick" />
+            <AppBarToggleButton Icon="RepeatAll" Label="Repeat" Click="AppBarButton_OnClick"/>
+            <AppBarSeparator/>
+            <AppBarButton Icon="Back" Label="Back" Click="AppBarButton_OnClick"/>
+            <AppBarButton Icon="Stop" Label="Stop" Click="AppBarButton_OnClick"/>
+            <AppBarButton Icon="Play" Label="Play" Click="AppBarButton_OnClick"/>
+            <AppBarButton Icon="Forward" Label="Forward" Click="AppBarButton_OnClick"/>
 
+            <CommandBar.SecondaryCommands>
+                <AppBarButton Icon="Like" Label="Like" Click="AppBarButton_OnClick"/>
+                <AppBarButton Icon="Dislike" Label="Dislike" Click="AppBarButton_OnClick"/>
+            </CommandBar.SecondaryCommands>
+
+            <CommandBar.Content>
+                <TextBlock Text="Now playing..." Margin="12,14"/>
+            </CommandBar.Content>
+        </CommandBar>
+    </Page.TopAppBar>
     <Grid>
         <!-- SplitView -->
         <SplitView x:Name="MySplitView"
@@ -32,7 +52,7 @@
                       Background="{StaticResource JustOneShadeOfGray}">
                     <ListView ItemsSource="{Binding Menu}"
                               SelectionChanged="Menu_SelectionChanged"
-                              Margin="0 48 0 0"
+                              Margin="0 0 0 0"
                               VerticalAlignment="Top">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -145,7 +165,6 @@
         <!-- Responsive Visual States -->
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
-
                 <!-- VisualState to be triggered when window width is >=900 effective pixels -->
                 <VisualState x:Name="Wide">
                     <VisualState.StateTriggers>
@@ -172,9 +191,9 @@
                         <!-- SplitView pane shows as overlay -->
                         <!-- Splitview pane will close however :-( -->
                         <Setter Target="MySplitView.DisplayMode"
-                                Value="Overlay" />
+                                Value="CompactInline" />
                         <Setter Target="MySplitView.IsPaneOpen"
-                                Value="True" />
+                                Value="False" />
                     </VisualState.Setters>
                 </VisualState>
                 
@@ -187,7 +206,7 @@
                         <!-- For intermediate window widths as well as most phones on landscape orientation -->
                         <!-- Splitview goes to compact mode - there's not builtin animation for this -->
                         <Setter Target="MySplitView.DisplayMode"
-                                Value="CompactInline" />
+                                Value="Overlay" />
                         <Setter Target="MySplitView.IsPaneOpen"
                                 Value="False" />
                     </VisualState.Setters>

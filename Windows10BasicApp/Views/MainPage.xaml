@@ -8,7 +8,8 @@
 
     <RelativePanel Background="Thistle"
                    Padding="8">
-
+        
+        <TextBlock x:Name="TextBlock" RelativePanel.Above="Description" RelativePanel.AlignTopWithPanel="True" FontSize="35" Text="This is main page"/>
         <!-- Image -->
         <Image x:Name="Illustration"
                Source="ms-appx:///Assets/Medusa.png"
